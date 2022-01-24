@@ -14073,6 +14073,8 @@ definitions:
         type: "string"
       created_at:
         type: "string"
+      action_type:
+        type: "string"
     description: "获取某个Pull Request的操作日志"
     example:
       icon: "icon"
@@ -14080,6 +14082,7 @@ definitions:
       id: "id"
       user: "user"
       content: "content"
+      action_type: "action_type"
   Note:
     type: "object"
     properties:
