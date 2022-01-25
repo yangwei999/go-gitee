@@ -20,6 +20,8 @@ const (
 	PRActionChangedTargetBranch = "target_branch_changed"
 	PRActionChangedSourceBranch = "source_branch_changed"
 	PRActionLinkIssue           = "update_link_issue"
+
+	ActionAddLabel = "add_label"
 )
 
 func GetPullRequestAction(e *PullRequestEvent) string {
