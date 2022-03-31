@@ -235,7 +235,7 @@ func (ph *PullRequestHook) GetMergeStatus() string {
 }
 
 func (ph *PullRequestHook) GetComments() int32 {
-	if ph != nil {
+	if ph == nil {
 		return 0
 	}
 
@@ -243,7 +243,7 @@ func (ph *PullRequestHook) GetComments() int32 {
 }
 
 func (ph *PullRequestHook) GetCommits() int32 {
-	if ph != nil {
+	if ph == nil {
 		return 0
 	}
 
@@ -251,7 +251,7 @@ func (ph *PullRequestHook) GetCommits() int32 {
 }
 
 func (ph *PullRequestHook) GetAdditions() int32 {
-	if ph != nil {
+	if ph == nil {
 		return 0
 	}
 
@@ -259,7 +259,7 @@ func (ph *PullRequestHook) GetAdditions() int32 {
 }
 
 func (ph *PullRequestHook) GetDeletions() int32 {
-	if ph != nil {
+	if ph == nil {
 		return 0
 	}
 
@@ -267,7 +267,7 @@ func (ph *PullRequestHook) GetDeletions() int32 {
 }
 
 func (ph *PullRequestHook) GetChangedFiles() int32 {
-	if ph != nil {
+	if ph == nil {
 		return 0
 	}
 
