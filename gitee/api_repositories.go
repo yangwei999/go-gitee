@@ -5557,30 +5557,11 @@ RepositoriesApiService 更新文件
  * @param owner 仓库所属空间地址(企业、组织或个人的地址path)
  * @param repo 仓库路径(path)
  * @param path 文件的路径
- * @param content 文件内容, 要用 base64 编码
- * @param sha 文件的 Blob SHA，可通过 [获取仓库具体路径下的内容] API 获取
- * @param message 提交信息
- * @param optional nil or *PutV5ReposOwnerRepoContentsPathOpts - Optional Parameters:
-     * @param "AccessToken" (optional.String) -  用户授权码
-     * @param "Branch" (optional.String) -  分支名称。默认为仓库对默认分支
-     * @param "CommitterName" (optional.String) -  Committer的名字，默认为当前用户的名字
-     * @param "CommitterEmail" (optional.String) -  Committer的邮箱，默认为当前用户的邮箱
-     * @param "AuthorName" (optional.String) -  Author的名字，默认为当前用户的名字
-     * @param "AuthorEmail" (optional.String) -  Author的邮箱，默认为当前用户的邮箱
+ * @param body 更新文件信息
 
 @return CommitContent
 */
-
-type PutV5ReposOwnerRepoContentsPathOpts struct {
-	AccessToken    optional.String
-	Branch         optional.String
-	CommitterName  optional.String
-	CommitterEmail optional.String
-	AuthorName     optional.String
-	AuthorEmail    optional.String
-}
-
-func (a *RepositoriesApiService) PutV5ReposOwnerRepoContentsPath(ctx context.Context, owner string, repo string, path string, content string, sha string, message string, localVarOptionals *PutV5ReposOwnerRepoContentsPathOpts) (CommitContent, *http.Response, error) {
+func (a *RepositoriesApiService) PutV5ReposOwnerRepoContentsPath(ctx context.Context, owner string, repo string, path string, body PutFileParam) (CommitContent, *http.Response, error) {
 	var (
 		localVarHttpMethod  = strings.ToUpper("Put")
 		localVarPostBody    interface{}
@@ -5616,27 +5597,8 @@ func (a *RepositoriesApiService) PutV5ReposOwnerRepoContentsPath(ctx context.Con
 	if localVarHttpHeaderAccept != "" {
 		localVarHeaderParams["Accept"] = localVarHttpHeaderAccept
 	}
-	if localVarOptionals != nil && localVarOptionals.AccessToken.IsSet() {
-		localVarFormParams.Add("access_token", parameterToString(localVarOptionals.AccessToken.Value(), ""))
-	}
-	localVarFormParams.Add("content", parameterToString(content, ""))
-	localVarFormParams.Add("sha", parameterToString(sha, ""))
-	localVarFormParams.Add("message", parameterToString(message, ""))
-	if localVarOptionals != nil && localVarOptionals.Branch.IsSet() {
-		localVarFormParams.Add("branch", parameterToString(localVarOptionals.Branch.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.CommitterName.IsSet() {
-		localVarFormParams.Add("committer[name]", parameterToString(localVarOptionals.CommitterName.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.CommitterEmail.IsSet() {
-		localVarFormParams.Add("committer[email]", parameterToString(localVarOptionals.CommitterEmail.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AuthorName.IsSet() {
-		localVarFormParams.Add("author[name]", parameterToString(localVarOptionals.AuthorName.Value(), ""))
-	}
-	if localVarOptionals != nil && localVarOptionals.AuthorEmail.IsSet() {
-		localVarFormParams.Add("author[email]", parameterToString(localVarOptionals.AuthorEmail.Value(), ""))
-	}
+	// body params
+	localVarPostBody = &body
 	r, err := a.client.prepareRequest(ctx, localVarPath, localVarHttpMethod, localVarPostBody, localVarHeaderParams, localVarQueryParams, localVarFormParams, localVarFileName, localVarFileBytes)
 	if err != nil {
 		return localVarReturnValue, nil, err
