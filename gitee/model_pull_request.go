@@ -33,7 +33,7 @@ type PullRequest struct {
 	Testers           []UserBasic `json:"testers,omitempty"`
 	Milestone         *Milestone  `json:"milestone,omitempty"`
 	Labels            []Label     `json:"labels,omitempty"`
-	Locked            string      `json:"locked,omitempty"`
+	Locked            bool        `json:"locked,omitempty"`
 	CreatedAt         string      `json:"created_at,omitempty"`
 	UpdatedAt         string      `json:"updated_at,omitempty"`
 	ClosedAt          string      `json:"closed_at,omitempty"`
@@ -41,7 +41,7 @@ type PullRequest struct {
 	Mergeable         bool        `json:"mergeable,omitempty"`
 	Head              *BasicInfo  `json:"head,omitempty"`
 	Base              *BasicInfo  `json:"base,omitempty"`
-	Links             string      `json:"_links,omitempty"`
+	Links             interface{} `json:"_links,omitempty"`
 	User              *UserBasic  `json:"user,omitempty"`
 	Comments          int32       `json:"comments,omitempty"`
 	Commits           int32       `json:"commits,omitempty"`
