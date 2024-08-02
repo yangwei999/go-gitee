@@ -12,8 +12,9 @@ const (
 	StatusClosed = "closed" //StatusClosed gitee issue or pr status is closed
 	StatusMerged = "merged"
 
-	ActionOpen  = "open"
-	ActionClose = "close"
+	ActionOpen   = "open"
+	ActionClose  = "close"
+	ActionReopen = "reopen"
 
 	PRActionMerge               = "merge"
 	PRActionUpdatedLabel        = "update_label"
@@ -28,6 +29,9 @@ func GetPullRequestAction(e *PullRequestEvent) string {
 	switch strings.ToLower(e.GetAction()) {
 	case ActionOpen:
 		return ActionOpen
+
+	case ActionReopen:
+		return ActionReopen
 
 	case "update":
 		switch strings.ToLower(e.GetActionDesc()) {
