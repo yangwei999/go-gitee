@@ -18,7 +18,7 @@ type IssueCreateParam struct {
 	// Issue标题
 	Title string `json:"title,omitempty"`
 	// 企业自定义任务类型，非企业默认任务类型为“任务”
-	IssuType string `json:"issu_type,omitempty"`
+	IssueType string `json:"issue_type,omitempty"`
 	// Issue描述
 	Body string `json:"body,omitempty"`
 	// Issue负责人的username
